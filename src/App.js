@@ -133,15 +133,14 @@ const App = props => {
     let now = new Date();
     let hrs = now.getHours();
     
-    if (hrs >  6) {
+    if (hrs < 12) {
       greetingValue = "Morgen";
-    } else if (hrs > 12) {
+    } else if (hrs < 17) {
       greetingValue = "Tag";
-    } else if (hrs > 17) {
-      greetingValue = "Abend";
     } else {
-      greetingValue = "Error";
+      greetingValue = "Abend";
     }
+
     console.log(greetingValue);
     return greetingValue;
   };
@@ -150,7 +149,7 @@ const App = props => {
     <StyledContainer>
       <GreetingDiv>
         <StyledHeadingOne>
-          <User greeting={greetingValue} name={usersState.users[0].name} />
+          <User greeting={greetingValue()} name={usersState.users[0].name} />
         </StyledHeadingOne>
       </GreetingDiv>
 
